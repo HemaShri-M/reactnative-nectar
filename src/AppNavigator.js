@@ -4,8 +4,9 @@ import * as React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer, StackActions} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+
 import onbording from './screen/Dashboard/onbording';
-import signin from './screen/Dashboard/signin';
+import Signin from './screen/Dashboard/Signin';
 import Number from './screen/Dashboard/Number';
 import Verification from './screen/Dashboard/Verification';
 import Location from './screen/Dashboard/Location';
@@ -16,6 +17,12 @@ import Explore from './screen/Dashboard/Explore';
 import MyCart from './screen/Dashboard/MyCart';
 import Favourites from './screen/Dashboard/Favourites';
 import Account from './screen/Dashboard/Account';
+import CheckOut from './screen/Dashboard/CheckOut';
+import OrderAccepted from './screen/Dashboard/OrderAccepted';
+import ProductDetails from './screen/Dashboard/ProductDetails';
+import Beverages from './screen/Dashboard/Beverages';
+import Filters from './screen/Dashboard/Filters';
+import Error from './screen/Dashboard/Error';
 
 const Stack = createStackNavigator();
 const Bottom = createBottomTabNavigator();
@@ -35,8 +42,8 @@ const initialNavigator = () => {
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="signin"
-          component={signin}
+          name="Signin"
+          component={Signin}
           options={{headerShown: false}}
         />
         <Stack.Screen
@@ -83,7 +90,17 @@ const MainStackScreens = () => {
         component={HomeScreen}
         options={{headerShown: false}}
       />
+      <Stack.Screen
+        name="ProductDetails"
+        component={ProductDetails}
+        options={{
+          headerShown: false,
+          tabBarVisible: false,
+          presentation: 'modal',
+        }}
+      />
     </Stack.Navigator>
+
     // </NavigationContainer>
   );
 };
@@ -93,6 +110,17 @@ const ExploreStackScreens = () => {
       <Stack.Screen
         name="Explore"
         component={Explore}
+        options={{headerShown: false}}
+      />
+
+      <Stack.Screen
+        name="Beverages"
+        component={Beverages}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Filters"
+        component={Filters}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
@@ -107,6 +135,16 @@ const CartStackScreens = () => {
         component={MyCart}
         options={{headerShown: false}}
       />
+      <Stack.Screen
+        name="CheckOut"
+        component={CheckOut}
+        options={{headerShown: false, presentation: 'modal'}}
+      />
+      <Stack.Screen
+        name="OrderAccepted"
+        component={OrderAccepted}
+        options={{headerShown: false, presentation: 'modal'}}
+      />
     </Stack.Navigator>
   );
 };
@@ -117,6 +155,11 @@ const FavouriteStackScreens = () => {
       <Stack.Screen
         name="Favourites"
         component={Favourites}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Error"
+        component={Error}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
@@ -164,6 +207,7 @@ function TabHomeBottom() {
                 <>
                   <Image
                     source={require('../src/assets/images/shop.png')}
+                    resizeMode="contain"
                     style={{
                       width: 22,
                       height: 20,
@@ -194,6 +238,7 @@ function TabHomeBottom() {
                 <>
                   <Image
                     source={require('../src/assets/images/explore.png')}
+                    resizeMode="contain"
                     style={{
                       width: 20,
                       height: 20,
@@ -224,6 +269,7 @@ function TabHomeBottom() {
                 <>
                   <Image
                     source={require('../src/assets/images/cart.png')}
+                    resizeMode="contain"
                     style={{
                       width: 20,
                       height: 20,
@@ -254,6 +300,7 @@ function TabHomeBottom() {
                 <>
                   <Image
                     source={require('../src/assets/images/favourite.png')}
+                    resizeMode="contain"
                     style={{
                       width: 20,
                       height: 20,
@@ -284,6 +331,7 @@ function TabHomeBottom() {
                 <>
                   <Image
                     source={require('../src/assets/images/account.png')}
+                    resizeMode="contain"
                     style={{
                       width: 20,
                       height: 20,

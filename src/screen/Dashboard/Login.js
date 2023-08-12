@@ -3,9 +3,10 @@ import {StyleSheet, Text, View, ImageBackground, Image} from 'react-native';
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
 import React, {useState, useEffect, useContext} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import LoginButton from '../../components/Loginbutton';
+
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Pressable} from 'react-native';
+import CustomButton from '../../components/CustomButton';
 
 export default function Login() {
   const navigation = useNavigation();
@@ -13,12 +14,17 @@ export default function Login() {
   const [password, setpassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
+  const Signup = () => {
+    onPress = navigation.navigate('Signup');
+    console.log('Button pressed!');
+  };
+
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
 
   return (
-    <View>
+    <View style={{backgroundColor: 'white', height: '100%'}}>
       <ImageBackground
         source={require('../../../src/assets/images/bgimage.png')}
         style={{
@@ -34,7 +40,7 @@ export default function Login() {
         <Text
           style={{
             fontFamily: 'Gilroy',
-            fontSize: 26,
+            fontSize: 24,
             fontWeight: 600,
             lineHeight: 25,
             letterSpacing: 0,
@@ -143,7 +149,7 @@ export default function Login() {
           </Text>
         </TouchableOpacity>
       </View>
-      <LoginButton />
+      <CustomButton title="Log In" style={{marginTop: 25}} onPress={Signup} />
       <View
         style={{
           marginTop: 15,
@@ -178,11 +184,11 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     marginTop: 5,
     padding: 8,
+    // marginRight: 160,
+
+    paddingRight: 170,
   },
   showPasswordButton: {
-    //paddingVertical: 10,
-    marginLeft: 150,
-    //backgroundColor: 'pink',
     marginTop: 16,
   },
 });

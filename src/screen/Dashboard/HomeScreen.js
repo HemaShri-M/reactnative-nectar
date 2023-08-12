@@ -7,8 +7,9 @@ import {
   View,
   FlatList,
   ScrollView,
+  Modal,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {
   SafeAreaProvider,
   useSafeAreaInsets,
@@ -19,9 +20,18 @@ import {ExclusiveOffer} from '../../constants/ExclusiveOffer.js';
 import {BestSelling} from '../../constants/BestSelling';
 import {Groceries} from '../../constants/Groceries';
 import {MeatFish} from '../../constants/MeatFish';
+import {useNavigation} from '@react-navigation/native';
+import ProductDetails from './ProductDetails';
+import CustomButton from '../../components/CustomButton';
 
 export default function HomeScreen() {
   const insets = useSafeAreaInsets();
+  const navigation = useNavigation();
+  const ProductDetails = () => {
+    onPress = navigation.navigate('ProductDetails');
+    console.log('Button pressed!');
+  };
+
   return (
     <SafeAreaProvider style={{flex: 1, marginTop: insets.top}}>
       <View style={{height: '100%', backgroundColor: 'white'}}>
@@ -109,7 +119,7 @@ export default function HomeScreen() {
 
             <View
               style={{
-                marginTop: 30,
+                marginTop: 40,
                 display: 'flex',
                 flexDirection: 'row',
                 marginRight: 20,
@@ -137,54 +147,90 @@ export default function HomeScreen() {
                 </Text>
               </TouchableOpacity>
             </View>
+
             <ScrollView horizontal={true}>
               <View
                 style={{
                   display: 'flex',
                   flexDirection: 'row',
                   alignItems: 'center',
-                  //alignSelf: 'left',
 
-                  marginBottom: 50,
+                  marginBottom: 10,
                   marginTop: 15,
-                  padding: 10,
-                  //marginVertical: 20,
-                  marginLeft: 20,
-                  marginRight: 30,
-                  //backgroundColor: 'pink',
                 }}>
                 {ExclusiveOffer.map(item => (
-                  <View style={{paddingRight: 30}}>
-                    <Image
-                      key={item.name}
-                      source={item.source}
-                      resizeMode="contain"
+                  <TouchableOpacity onPress={ProductDetails}>
+                    {/* {openModal ? renderModal() : null} */}
+                    {/* onPress={() => setOpenModal(true)} */}
+                    <View
                       style={{
-                        marginBottom: 5,
-                        //marginLeft: 10,
-                      }}></Image>
-                    <Text
-                      style={{
-                        fontFamily: 'Gilroy-Bold',
-                        fontSize: 16,
-                        lineHeight: 18,
-                        letterSpacing: 0.1,
-                        textAlign: 'left',
-                        color: '#181725',
-                      }}>
-                      {item.name}
-                    </Text>
-                    <Text
-                      style={{
-                        fontFamily: 'Gilroy-Medium',
-                        fontSize: 14,
-                        lineHeight: 18,
+                        marginHorizontal: 7,
 
-                        textAlign: 'left',
+                        padding: 10,
+
+                        borderRadius: 18,
+                        borderWidth: 1,
+                        borderColor: '#E2E2E2',
                       }}>
-                      {item.description}
-                    </Text>
-                  </View>
+                      <Image
+                        key={item.name}
+                        source={item.source}
+                        resizeMode="contain"
+                        style={{
+                          marginBottom: 5,
+                          //marginLeft: 10,
+                          width: 100,
+                          height: 60,
+                          justifyContent: 'center',
+                        }}></Image>
+                      <Text
+                        style={{
+                          fontFamily: 'Gilroy-Bold',
+                          fontSize: 16,
+                          lineHeight: 18,
+                          letterSpacing: 0.1,
+                          textAlign: 'left',
+                          color: '#181725',
+                          marginTop: 5,
+                        }}>
+                        {item.name}
+                      </Text>
+                      <Text
+                        style={{
+                          fontFamily: 'Gilroy-Medium',
+                          fontSize: 14,
+                          lineHeight: 18,
+
+                          textAlign: 'left',
+                        }}>
+                        {item.description}
+                      </Text>
+                      <View style={{display: 'flex', flexDirection: 'row'}}>
+                        <Text
+                          style={{
+                            fontFamily: 'Gilroy-Bold',
+                            fontWeight: 600,
+                            fontSize: 18,
+                            lineHeight: 18,
+                            letterSpacing: 0.1,
+                            textAlign: 'left',
+                            marginTop: 32,
+                            color: '#181725',
+                          }}>
+                          {item.amount}
+                        </Text>
+                        <TouchableOpacity>
+                          <Image
+                            source={require('../../../src/assets/images/plus1.png')}
+                            style={{
+                              //paddingTop: 15,
+                              marginLeft: 30,
+                              marginTop: 15,
+                            }}></Image>
+                        </TouchableOpacity>
+                      </View>
+                    </View>
+                  </TouchableOpacity>
                 ))}
               </View>
             </ScrollView>
@@ -225,12 +271,21 @@ export default function HomeScreen() {
                   display: 'flex',
                   flexDirection: 'row',
                   justifyContent: 'space-around',
-                  marginBottom: 50,
+                  marginBottom: 10,
                   marginTop: 15,
-                  marginLeft: 20,
+                  //marginLeft: 20,
                 }}>
                 {BestSelling.map(item => (
-                  <View style={{paddingRight: 40}}>
+                  <View
+                    style={{
+                      marginHorizontal: 7,
+
+                      padding: 10,
+
+                      borderRadius: 18,
+                      borderWidth: 1,
+                      borderColor: '#E2E2E2',
+                    }}>
                     <Image
                       key={item.name}
                       source={item.source}
@@ -246,6 +301,7 @@ export default function HomeScreen() {
                         letterSpacing: 0.1,
                         textAlign: 'left',
                         color: '#181725',
+                        marginTop: 5,
                       }}>
                       {item.name}
                     </Text>
@@ -259,6 +315,30 @@ export default function HomeScreen() {
                       }}>
                       {item.description}
                     </Text>
+                    <View style={{display: 'flex', flexDirection: 'row'}}>
+                      <Text
+                        style={{
+                          fontFamily: 'Gilroy-Bold',
+                          fontWeight: 600,
+                          fontSize: 18,
+                          lineHeight: 18,
+                          letterSpacing: 0.1,
+                          textAlign: 'left',
+                          marginTop: 32,
+                          color: '#181725',
+                        }}>
+                        {item.amount}
+                      </Text>
+                      <TouchableOpacity>
+                        <Image
+                          source={require('../../../src/assets/images/plus1.png')}
+                          style={{
+                            //paddingTop: 15,
+                            marginLeft: 30,
+                            marginTop: 15,
+                          }}></Image>
+                      </TouchableOpacity>
+                    </View>
                   </View>
                 ))}
               </View>
@@ -308,7 +388,12 @@ export default function HomeScreen() {
                       paddingRight: 40,
                       display: 'flex',
                       flexDirection: 'row',
-                      marginLeft: 20,
+                      //marginLeft: 15,
+                      marginHorizontal: 7,
+                      borderRadius: 18,
+                      borderWidth: 1,
+                      borderColor: '#E2E2E2',
+                      backgroundColor: item.color,
                     }}>
                     <Image
                       key={item.name}
@@ -316,6 +401,9 @@ export default function HomeScreen() {
                       resizeMode="contain"
                       style={{
                         marginBottom: 5,
+                        marginLeft: 10,
+                        width: 71,
+                        height: 71,
                       }}></Image>
                     <Text
                       style={{
@@ -334,36 +422,7 @@ export default function HomeScreen() {
                 ))}
               </View>
             </ScrollView>
-            <View
-              style={{
-                //marginTop: 10,
-                display: 'flex',
-                flexDirection: 'row',
-                marginRight: 20,
-              }}>
-              <Text
-                style={{
-                  fontFamily: 'Gilroy',
-                  fontSize: 18,
-                  fontWeight: 600,
-                  lineHeight: 23,
-                  letterSpacing: 0,
-                  textAlign: 'left',
-                  color: '#181725',
-                }}>
-                Meat&Fish
-              </Text>
-              <TouchableOpacity>
-                <Text
-                  style={{
-                    color: '#53B175',
 
-                    marginLeft: 200,
-                  }}>
-                  See all
-                </Text>
-              </TouchableOpacity>
-            </View>
             <ScrollView horizontal={true}>
               <View
                 style={{
@@ -371,17 +430,27 @@ export default function HomeScreen() {
                   flexDirection: 'row',
                   justifyContent: 'space-around',
                   marginBottom: 50,
-                  marginTop: 15,
-                  marginLeft: 20,
+                  marginTop: 10,
+                  // marginLeft: 20,
                 }}>
                 {MeatFish.map(item => (
-                  <View style={{paddingRight: 40}}>
+                  <View
+                    style={{
+                      marginHorizontal: 7,
+                      padding: 10,
+                      borderRadius: 18,
+                      borderWidth: 1,
+                      borderColor: '#E2E2E2',
+                    }}>
                     <Image
                       key={item.name}
                       source={item.source}
                       resizeMode="contain"
                       style={{
                         marginBottom: 5,
+                        marginTop: 5,
+                        width: 107,
+                        height: 67,
                       }}></Image>
                     <Text
                       style={{
@@ -391,6 +460,7 @@ export default function HomeScreen() {
                         letterSpacing: 0.1,
                         textAlign: 'left',
                         color: '#181725',
+                        marginTop: 5,
                       }}>
                       {item.name}
                     </Text>
@@ -403,6 +473,29 @@ export default function HomeScreen() {
                       }}>
                       {item.description}
                     </Text>
+                    <View style={{display: 'flex', flexDirection: 'row'}}>
+                      <Text
+                        style={{
+                          fontFamily: 'Gilroy-Bold',
+                          fontWeight: 600,
+                          fontSize: 18,
+                          lineHeight: 18,
+                          letterSpacing: 0.1,
+                          textAlign: 'left',
+                          marginTop: 32,
+                          color: '#181725',
+                        }}>
+                        {item.amount}
+                      </Text>
+                      <TouchableOpacity>
+                        <Image
+                          source={require('../../../src/assets/images/plus1.png')}
+                          style={{
+                            marginTop: 15,
+                            marginLeft: 30,
+                          }}></Image>
+                      </TouchableOpacity>
+                    </View>
                   </View>
                 ))}
               </View>

@@ -6,18 +6,29 @@ import {
   RootTagContext,
   Image,
   Button,
+  StatusBar,
 } from 'react-native';
 import React from 'react';
 //import {SafeAreaProvider} from 'react-native-safe-area-context';
 
-import ButtonOne from '../../components/ButtonOne';
+import CustomButton from '../../components/CustomButton';
+import {useNavigation} from '@react-navigation/native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 export default function Onbording() {
+  const navigation = useNavigation();
+  const Signin = () => {
+    onPress = navigation.navigate('Signin');
+    console.log('Button pressed!');
+  };
   return (
-    <View>
+    <View style={{}}>
       <ImageBackground
         source={require('../../../src/assets/images/onbording.png')}
-        style={{width: '100%', height: '100%'}}>
+        style={{
+          width: '100%',
+          height: '100%',
+        }}>
         <Image
           source={require('../../../src/assets/images/carrot.png')}
           style={{width: 48, height: 56, marginTop: 395, marginLeft: 160}}
@@ -25,7 +36,7 @@ export default function Onbording() {
         <Text
           style={{
             fontFamily: 'Gilroy',
-            fontSize: 36,
+            fontSize: 34,
             fontWeight: 600,
             lineHeight: 32,
             letterSpacing: 0,
@@ -39,7 +50,7 @@ export default function Onbording() {
         <Text
           style={{
             fontFamily: 'Gilroy',
-            fontSize: 36,
+            fontSize: 34,
             fontWeight: 600,
             lineHeight: 32,
             letterSpacing: 0,
@@ -57,11 +68,12 @@ export default function Onbording() {
             textAlign: 'center',
             color: '#FCFCFCB2',
             marginTop: 10,
+            marginBottom: 30,
           }}>
           Get your groceries in as fast as one hour
         </Text>
 
-        <ButtonOne />
+        <CustomButton title="Get Started" onPress={Signin} />
       </ImageBackground>
     </View>
   );

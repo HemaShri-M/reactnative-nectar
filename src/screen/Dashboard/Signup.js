@@ -1,18 +1,37 @@
-import {StyleSheet, Text, View, ImageBackground, Image} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  ImageBackground,
+  Image,
+  Pressable,
+} from 'react-native';
 
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
 import React, {useState, useEffect, useContext} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import SignupButton from '../../components/signupButton';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
+import CustomButton from '../../components/CustomButton';
 
 export default function Signup() {
   const navigation = useNavigation();
   const [username, setusername] = useState('');
   const [email, setemail] = useState('');
   const [password, setpassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const TabHomeBottom = () => {
+    onPress = navigation.navigate('TabHomeBottom');
+    console.log('Button pressed!');
+  };
 
   return (
-    <View>
+    <View style={{backgroundColor: 'white', height: '100%'}}>
       <ImageBackground
         source={require('../../../src/assets/images/bgimage.png')}
         style={{
@@ -28,7 +47,7 @@ export default function Signup() {
         <Text
           style={{
             fontFamily: 'Gilroy',
-            fontSize: 26,
+            fontSize: 24,
             fontWeight: 600,
             lineHeight: 25,
             letterSpacing: 0,
@@ -124,7 +143,11 @@ export default function Signup() {
             Password
           </Text>
           <View>
-            <TouchableOpacity>
+            <Pressable
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+              }}>
               <TextInput
                 style={styles.numberbox}
                 placeholder="Enter your password"
@@ -137,7 +160,16 @@ export default function Signup() {
                 maxLength={70}
                 value={password}
               />
-            </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.showPasswordButton}
+                onPress={toggleShowPassword}>
+                <Icon
+                  name={showPassword ? 'eye-slash' : 'eye'}
+                  size={20}
+                  color="black"
+                />
+              </TouchableOpacity>
+            </Pressable>
           </View>
         </View>
         <View
@@ -188,7 +220,11 @@ export default function Signup() {
           </TouchableOpacity>
         </View>
       </View>
-      <SignupButton />
+      <CustomButton
+        title="Sign Up"
+        style={{marginTop: 25}}
+        onPress={TabHomeBottom}
+      />
       <View
         style={{
           marginTop: 15,
@@ -223,5 +259,9 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     marginTop: 5,
     padding: 8,
+    paddingRight: 170,
+  },
+  showPasswordButton: {
+    marginTop: 16,
   },
 });

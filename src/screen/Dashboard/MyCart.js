@@ -3,10 +3,19 @@ import React from 'react';
 import {FindProducts} from '../../constants/FindProducts';
 import {Groceries} from '../../constants/Groceries';
 import {MeatFish} from '../../constants/MeatFish';
+import CustomButton from '../../components/CustomButton';
+import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
+import CheckOut from './CheckOut';
+import {useNavigation} from '@react-navigation/native';
 export default function MyCart() {
+  const navigation = useNavigation();
+  const CheckOut = () => {
+    onPress = navigation.navigate('CheckOut');
+    console.log('Button pressed!');
+  };
   return (
     <View style={{backgroundColor: 'white', height: '100%'}}>
-      <View style={{}}>
+      <View>
         <Text
           style={{
             fontFamily: 'GilroyBold',
@@ -20,7 +29,7 @@ export default function MyCart() {
           My Cart
         </Text>
       </View>
-      <View style={{}}>
+      <View style={{borderTopWidth: 1, borderColor: '#E2E2E2', marginTop: 20}}>
         <FlatList
           horizontal={false}
           scrollEnabled={true}
@@ -28,23 +37,45 @@ export default function MyCart() {
           renderItem={({item}) => (
             <View
               style={{
-                // display: 'flex',
-                // flexDirection: 'column',
-                //justifyContent: 'space-around',
-                marginBottom: 50,
+                // marginBottom: 25,
                 marginTop: 20,
                 marginLeft: 20,
                 alignContent: 'center',
+
+                marginRight: 20,
+                //padding: 5,
+                paddingBottom: 20,
+                borderBottomWidth: 1,
+                borderColor: '#E2E2E2',
               }}>
-              <View style={{display: 'flex', flexDirection: 'row'}}>
-                <Image
-                  key={item.name}
-                  source={item.source}
-                  resizeMode="contain"
+              <View
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                }}>
+                <View style={{}}>
+                  <Image
+                    key={item.name}
+                    source={item.source}
+                    resizeMode="contain"
+                    style={{
+                      // marginBottom: 5,
+                      width: 107,
+                      height: 67,
+
+                      marginTop: 15,
+                    }}></Image>
+                </View>
+                <View
                   style={{
-                    marginBottom: 5,
-                  }}></Image>
-                <View style={{display: 'flex', flexDirection: 'column'}}>
+                    display: 'flex',
+                    flexDirection: 'column',
+                  }}>
+                  {/* <View
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'row',
+                    }}> */}
                   <Text
                     style={{
                       fontFamily: 'Gilroy-Bold',
@@ -57,23 +88,51 @@ export default function MyCart() {
                     }}>
                     {item.name}
                   </Text>
+
+                  {/* <TouchableOpacity style={{}}>
+                      <Image
+                        source={require('../../../src/assets/images/close.png')}
+                        style={
+                          {
+                            //marginRight: 20,
+                          }
+                        }></Image>
+                    </TouchableOpacity> */}
+                  {/* </View> */}
                   <Text
                     style={{
                       fontFamily: 'Gilroy-Medium',
                       fontSize: 14,
                       lineHeight: 18,
-                      // marginTop: 120,
-                      //marginRight: 40,
+
                       textAlign: 'left',
                       marginLeft: 14,
                     }}>
                     {item.description}
                   </Text>
+                  <View
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'row',
+                      //marginBottom: 40,
+                    }}>
+                    <TouchableOpacity>
+                      <Image
+                        source={require('../../../src/assets/images/minus.png')}
+                        style={{marginTop: 10, marginLeft: 10}}></Image>
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                      <Image
+                        source={require('../../../src/assets/images/plus.png')}
+                        style={{marginTop: 10, marginLeft: 40}}></Image>
+                    </TouchableOpacity>
+                  </View>
                 </View>
               </View>
             </View>
           )}
         />
+        <CustomButton title="Go to Checkout" onPress={CheckOut} style={{}} />
       </View>
     </View>
   );

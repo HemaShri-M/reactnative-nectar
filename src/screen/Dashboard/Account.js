@@ -1,18 +1,27 @@
 import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import LogoutButton from '../../components/LogoutButton';
 
 export default function Account() {
   return (
     <View style={{backgroundColor: 'white', height: '100%'}}>
-      <View style={{marginLeft: 20, marginRight: 20}}>
-        <View style={{display: 'flex', flexDirection: 'row'}}>
+      <View
+        style={{
+          marginLeft: 20,
+          marginRight: 20,
+        }}>
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+          }}>
           <Image
             source={require('../../../src/assets/images/profile.png')}
             style={{
               borderRadius: 27,
-              width: 63,
-              height: 64,
+              width: 58,
+              height: 60,
               marginTop: 20,
             }}></Image>
           <View
@@ -20,12 +29,13 @@ export default function Account() {
             <Text
               style={{
                 fontFamily: 'Gilroy-Bold',
-                fontSize: 18,
+                fontSize: 17,
                 lineHeight: 20,
                 letterSpacing: 0,
                 textAlign: 'left',
                 color: '#181725',
                 marginTop: 35,
+                fontWeight: 600,
               }}>
               Afsar Hossen{'  '}
               <Image
@@ -41,19 +51,33 @@ export default function Account() {
                 textAlign: 'left',
                 color: '#7C7C7C',
                 //marginTop: 50,
+                marginBottomWidth: 1,
+                borderColor: '#E2E2E2',
               }}>
               Imshuvo97@gmail.com
             </Text>
           </View>
         </View>
-        <View style={{display: 'flex', flexDirection: 'row', marginTop: 40}}>
+      </View>
+      <View style={{}}>
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            marginTop: 30,
+            paddingBottom: 15,
+            borderBottomWidth: 1,
+            borderTopWidth: 1,
+            borderColor: '#E2E2E2',
+            paddingTop: 15,
+          }}>
           <Image
             source={require('../../../src/assets/images/Ordersicon.png')}
-            style={{}}></Image>
+            style={{marginLeft: 20}}></Image>
           <Text
             style={{
               marginLeft: 20,
-              fontfamily: ' Gilroy',
+              fontfamily: ' Gilroy-Regular',
               fontSize: 16,
               fontWeight: 600,
               lineHeight: 22,
@@ -72,14 +96,22 @@ export default function Account() {
               }}></Image>
           </TouchableOpacity>
         </View>
-        <View style={{display: 'flex', flexDirection: 'row', marginTop: 35}}>
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            marginTop: 15,
+            paddingBottom: 15,
+            borderBottomWidth: 1,
+            borderColor: '#E2E2E2',
+          }}>
           <Image
             source={require('../../../src/assets/images/Mydetails.png')}
-            style={{}}></Image>
+            style={{marginLeft: 20}}></Image>
           <Text
             style={{
               marginLeft: 20,
-              fontfamily: ' Gilroy',
+              fontfamily: ' Gilroy-Regular',
               fontSize: 16,
               fontWeight: 600,
               lineHeight: 22,
@@ -98,14 +130,22 @@ export default function Account() {
               }}></Image>
           </TouchableOpacity>
         </View>
-        <View style={{display: 'flex', flexDirection: 'row', marginTop: 35}}>
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            borderBottomWidth: 1,
+            paddingBottom: 15,
+            borderColor: '#E2E2E2',
+            paddingTop: 15,
+          }}>
           <Image
             source={require('../../../src/assets/images/Ordersicon.png')}
-            style={{}}></Image>
+            style={{marginLeft: 20}}></Image>
           <Text
             style={{
               marginLeft: 20,
-              fontfamily: ' Gilroy',
+              fontfamily: ' Gilroy-Regular',
               fontSize: 16,
               fontWeight: 600,
               lineHeight: 22,
@@ -124,14 +164,22 @@ export default function Account() {
               }}></Image>
           </TouchableOpacity>
         </View>
-        <View style={{display: 'flex', flexDirection: 'row', marginTop: 35}}>
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            paddingBottom: 15,
+            borderBottomWidth: 1,
+            borderColor: '#E2E2E2',
+            paddingTop: 15,
+          }}>
           <Image
             source={require('../../../src/assets/images/paymentmethod.png')}
-            style={{}}></Image>
+            style={{marginLeft: 20}}></Image>
           <Text
             style={{
               marginLeft: 20,
-              fontfamily: ' Gilroy',
+              fontfamily: ' Gilroy-Regular',
               fontSize: 16,
               fontWeight: 600,
               lineHeight: 22,
@@ -150,14 +198,22 @@ export default function Account() {
               }}></Image>
           </TouchableOpacity>
         </View>
-        <View style={{display: 'flex', flexDirection: 'row', marginTop: 35}}>
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            paddingBottom: 15,
+            borderBottomWidth: 1,
+            borderColor: '#E2E2E2',
+            paddingTop: 15,
+          }}>
           <Image
             source={require('../../../src/assets/images/Promo.png')}
-            style={{}}></Image>
+            style={{marginLeft: 20}}></Image>
           <Text
             style={{
               marginLeft: 20,
-              fontfamily: ' Gilroy',
+              fontfamily: ' Gilroy-Regular',
               fontSize: 16,
               fontWeight: 600,
               lineHeight: 22,
@@ -176,14 +232,22 @@ export default function Account() {
               }}></Image>
           </TouchableOpacity>
         </View>
-        <View style={{display: 'flex', flexDirection: 'row', marginTop: 35}}>
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            paddingBottom: 15,
+            borderBottomWidth: 1,
+            borderColor: '#E2E2E2',
+            paddingTop: 15,
+          }}>
           <Image
             source={require('../../../src/assets/images/Bellicon.png')}
-            style={{}}></Image>
+            style={{marginLeft: 20}}></Image>
           <Text
             style={{
               marginLeft: 20,
-              fontfamily: ' Gilroy',
+              fontfamily: ' Gilroy-Regular',
               fontSize: 16,
               fontWeight: 600,
               lineHeight: 22,
@@ -202,14 +266,22 @@ export default function Account() {
               }}></Image>
           </TouchableOpacity>
         </View>
-        <View style={{display: 'flex', flexDirection: 'row', marginTop: 35}}>
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            paddingBottom: 15,
+            borderBottomWidth: 1,
+            borderColor: '#E2E2E2',
+            paddingTop: 15,
+          }}>
           <Image
             source={require('../../../src/assets/images/helpicon.png')}
-            style={{}}></Image>
+            style={{marginLeft: 20}}></Image>
           <Text
             style={{
               marginLeft: 20,
-              fontfamily: ' Gilroy',
+              fontfamily: ' Gilroy-Regular',
               fontSize: 16,
               fontWeight: 600,
               lineHeight: 22,
@@ -228,14 +300,22 @@ export default function Account() {
               }}></Image>
           </TouchableOpacity>
         </View>
-        <View style={{display: 'flex', flexDirection: 'row', marginTop: 35}}>
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            paddingBottom: 15,
+            borderBottomWidth: 1,
+            borderColor: '#E2E2E2',
+            paddingTop: 15,
+          }}>
           <Image
             source={require('../../../src/assets/images/abouticon.png')}
-            style={{}}></Image>
+            style={{marginLeft: 20}}></Image>
           <Text
             style={{
               marginLeft: 20,
-              fontfamily: ' Gilroy',
+              fontfamily: ' Gilroy-Regular',
               fontSize: 16,
               fontWeight: 600,
               lineHeight: 22,
@@ -256,6 +336,8 @@ export default function Account() {
           </TouchableOpacity>
         </View>
       </View>
+
+      <LogoutButton title="Log Out" />
     </View>
   );
 }

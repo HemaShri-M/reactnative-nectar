@@ -2,12 +2,17 @@ import {StyleSheet, Text, View, ImageBackground, Image} from 'react-native';
 import React from 'react';
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/native';
-import SubmitButton from '../../components/SubmitButton';
+
+import CustomButton from '../../components/CustomButton';
 
 export default function Location() {
   const navigation = useNavigation();
+  const Login = () => {
+    onPress = navigation.navigate('Login');
+    console.log('Button pressed!');
+  };
   return (
-    <View>
+    <View style={{backgroundColor: 'white', height: '100%'}}>
       <ImageBackground
         source={require('../../../src/assets/images/bgimage.png')}
         style={{
@@ -27,16 +32,19 @@ export default function Location() {
         </TouchableOpacity>
         <Image
           source={require('../../../src/assets/images/location.png')}
+          resizeMode="contain"
           style={{
+            width: 190,
+            height: 170,
             marginTop: 25,
-            marginHorizontal: 65,
+            marginHorizontal: 85,
           }}></Image>
       </ImageBackground>
       <View>
         <Text
           style={{
             fontFamily: 'Gilroy',
-            fontSize: 26,
+            fontSize: 24,
             fontWeight: 600,
             lineHeight: 25,
             letterSpacing: 0,
@@ -124,7 +132,7 @@ export default function Location() {
             </TouchableOpacity>
           </View>
         </View>
-        <SubmitButton />
+        <CustomButton title="Submit" onPress={Login} style={{marginTop: 30}} />
       </View>
     </View>
   );

@@ -7,7 +7,7 @@ export default function Number() {
   const navigation = useNavigation();
   const [phone, setPhone] = useState('');
   return (
-    <View>
+    <View style={{backgroundColor: 'white', height: '100%'}}>
       <ImageBackground
         source={require('../../../src/assets/images/bgimage.png')}
         style={{
@@ -31,7 +31,7 @@ export default function Number() {
           <Text
             style={{
               fontFamily: 'Gilroy',
-              fontSize: 26,
+              fontSize: 24,
               fontWeight: 600,
               lineHeight: 25,
               letterSpacing: 0,

@@ -13,12 +13,13 @@ import ButtonThree from '../../components/ButtonThree';
 import {useNavigation} from '@react-navigation/native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {Button} from 'react-native';
+import CustomButton from '../../components/CustomButton';
 
 export default function Signin() {
   const navigation = useNavigation();
   //const [phone, setPhone] = useState('');
   return (
-    <View>
+    <View style={{backgroundColor: 'white', height: '100%'}}>
       <ImageBackground
         source={require('../../../src/assets/images/number.png')}
         style={{
@@ -33,7 +34,7 @@ export default function Signin() {
         <Text
           style={{
             fontFamily: 'Gilroy',
-            fontSize: 26,
+            fontSize: 24,
             fontWeight: 600,
             lineHeight: 25,
             letterSpacing: 0,
